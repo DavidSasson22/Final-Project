@@ -9,13 +9,13 @@
 2. As a sign client you could also rank the buisness and the restroom condition.
 3. As sign provided you could publish your buisness and offer it's restrooms.
 
-## Architecture 
+> Architecture 
 
 MERN architecture:
-![Diagram](https://github.com/[DavidSasson22]/[Final-Project]/blob/[main]/mern.jpg?raw=true)
+![Diagram](https://github.com/DavidSasson22/Final-Project/blob/main/mern.JPG?raw=true)
 
 
-## Copyright
+> Copyright
 Copyright (c) 2021 David Sasson
 
 -David Sasson
