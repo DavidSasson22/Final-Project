@@ -17,7 +17,7 @@ const getClient = async (req, res) => {
 
 const updateClient = async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ['firstName', 'lastName', 'isActive'];
+  const allowedUpdates = ['firstName', 'lastName', 'isActive', 'email', `password`];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
   if (!isValidOperation) {

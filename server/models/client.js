@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 
-
-const clientSchme = mongoose.model('clients-collection', {
+const clientSchema = mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -21,14 +21,19 @@ const clientSchme = mongoose.model('clients-collection', {
 
   email: {
     type: String,
+    unique: true,
     required: true,
     trim: true,
     lowercase: true,
     validate(value) {
-      if(validator.isEmail(!value)) {
-        throw new Error (`Email is invalid`)
+      if (!validator.isEmail(value)) {
+        throw new Error(`Email is invalid: ${value}`)
       }
     }
+  },
+
+  password: {
+
   },
 
   joinedAt: {
@@ -44,5 +49,15 @@ const clientSchme = mongoose.model('clients-collection', {
   },
 })
 
+clientSchema.pre(`save`, async function (next) {
+  const client = this;
+  if (client.isModified('password')) {
+    client.password = await bcrypt.hash(client.password, 8);
+  }
+  next();
+})
 
-module.exports = clientSchme;
+const Client = mongoose.model('clients-collection', clientSchema)
+
+
+module.exports = Client;
