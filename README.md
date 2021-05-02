@@ -12,7 +12,7 @@
 ## Architecture 
 
 MERN architecture:
-![Diagram](../mern.jpg)
+![Diagram](https://github.com/[DavidSasson22]/[Final-Project]/blob/[main]/mern.jpg?raw=true)
 
 
 ## Copyright
