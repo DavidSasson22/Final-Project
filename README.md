@@ -15,7 +15,7 @@ MERN architecture:
 ![Diagram](https://github.com/DavidSasson22/Final-Project/blob/main/mern.JPG?raw=true)
 
 
-> Copyright
+> 
 Copyright (c) 2021 David Sasson
 
 -David Sasson
