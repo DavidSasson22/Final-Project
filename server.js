@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('./server/dataBase/mongoose');
 const clientRouter = require('./server/routs/client');
-const registerRouter = (require('./server/routs/register'));
+const registerRouter = (require('./server/routs/clientRegister'));
 
 
 const app = express();
