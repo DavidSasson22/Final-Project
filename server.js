@@ -4,7 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('./server/dataBase/mongoose');
 const clientRouter = require('./server/routs/client');
-const registerRouter = (require('./server/routs/clientRegister'));
+const clientRegRouter = (require('./server/routs/clientRegister'));
+const clientLogRouter = (require('./server/routs/clientLog'));
 
 
 const app = express();
@@ -16,7 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/clients', clientRouter);
-app.use('/api/register', registerRouter);
+app.use('/api/clientsRegister', clientRegRouter);
+// app.use('/api/clientsLog', registerRouter);
 
 
 // API calls
