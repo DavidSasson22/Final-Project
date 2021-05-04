@@ -14,6 +14,11 @@
 MERN architecture:
 ![Diagram](https://github.com/DavidSasson22/Final-Project/blob/main/mern.JPG?raw=true)
 
+> Data Base 
+
+Collections:
+![Diagram](https://github.com/DavidSasson22/To-Pee-or-Not-to-Pee/blob/main/DB.JPG?raw=true)
+
 
 > 
 Copyright (c) 2021 David Sasson
