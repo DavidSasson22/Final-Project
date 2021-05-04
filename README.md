@@ -9,16 +9,13 @@
 2. As a sign client you could also rank the buisness and the restroom's condition.
 3. As a sign provided you could publish your buisness and offer it's restrooms.
 
-> Architecture 
-MERN architecture:
+>MERN architecture:
 ![Diagram](https://github.com/DavidSasson22/Final-Project/blob/main/mern.JPG?raw=true)
 
-> Data Base 
-Collections:
+>Data Base Collections:
 ![Diagram](https://github.com/DavidSasson22/To-Pee-or-Not-to-Pee/blob/main/DB.JPG?raw=true)
 
-> Back-End
-Functions:
+>Back-End Functions:
 ![Diagram](https://github.com/DavidSasson22/To-Pee-or-Not-to-Pee/blob/main/Back-End.JPG?raw=true)
 
 
