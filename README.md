@@ -19,6 +19,11 @@ MERN architecture:
 Collections:
 ![Diagram](https://github.com/DavidSasson22/To-Pee-or-Not-to-Pee/blob/main/DB.JPG?raw=true)
 
+> Back-End
+
+Functions:
+![Diagram](https://github.com/DavidSasson22/To-Pee-or-Not-to-Pee/blob/main/Back-End.JPG?raw=true)
+
 
 > 
 Copyright (c) 2021 David Sasson
