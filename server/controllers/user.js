@@ -26,7 +26,7 @@ const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
     user ? res.status(200).send(user) : res.status(404).send();
-  } 
+  }
   catch (e) {
     res.status(400).send(e)
   };
@@ -34,11 +34,12 @@ const updateUser = async (req, res) => {
 
 //Create new user
 const createNewUser = async (req, res) => {
-  const { firstName, lastName, email, password, joinedAt, isActive } = req.body;
-  const user = new User({ firstName, lastName, email, password, joinedAt, isActive });
+  const { firstName, lastName, email, password, joinedAt, isActive, userType } = req.body;
+  const user = new User({ firstName, lastName, email, password, joinedAt, isActive, userType });
   try {
     await user.save();
-    res.status(201).send(user);
+    const token = await user.generateAuthToken();
+    res.status(201).send({ user, token });
   }
   catch (e) {
     res.status(400).send(e);
@@ -49,7 +50,8 @@ const createNewUser = async (req, res) => {
 const userLog = async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password);
-    res.send(user);
+    const token = await user.generateAuthToken();
+    res.send({ user, token });
   }
   catch (e) {
     res.status(400).send();
