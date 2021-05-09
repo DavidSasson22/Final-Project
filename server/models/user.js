@@ -47,8 +47,30 @@ const userSchema = mongoose.Schema({
     unique: false,
     default: true
   },
+
+  userType: {
+    //0 = Admin, 1 = Provider, 2 = Client
+    type: Number,
+    min: 0,
+    max: 2,
+  }
 })
 
+
+userSchema.statics.findByCredentials = async (email, password) => {
+  const user = await User.findOne({ email });
+  if (!user) {
+    throw new Error(`Unable to login`);
+  };
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    throw new Error(`Unable to login`)
+  };
+  return user
+};
+
+
+//Hash password before saving
 userSchema.pre(`save`, async function (next) {
   const user = this;
   if (user.isModified('password')) {

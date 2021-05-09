@@ -6,10 +6,6 @@ const reviewSchema = mongoose.Schema({
 
   },
 
-  buisness: {
-
-  },
-
   date: {
     type: Date,
     default: Date.now,

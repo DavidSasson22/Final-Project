@@ -31,10 +31,37 @@ const updateUser = async (req, res) => {
   catch (e) {
     res.status(400).send(e)
   }
-}
+};
+
+
+const createNewUser = async (req, res) => {
+  const { firstName, lastName, email, password, joinedAt, isActive } = req.body;
+  const user = new User({ firstName, lastName, email, password, joinedAt, isActive });
+  try {
+    await user.save();
+    res.status(201).send(user);
+  }
+  catch (e) {
+    // console.log(user);
+    res.status(400).send(e);
+  }
+};
+
+
+const userLog = async (req, res) => {
+  try {
+    const user = await User.findByCredentials(req.body.email, req.body.password);
+    res.send(user);
+  }
+  catch (e) {
+    res.status(400).send();
+  };
+};
 
 
 module.exports = {
   getUser,
   updateUser,
+  createNewUser,
+  userLog,
 }
