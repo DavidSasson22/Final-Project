@@ -10,11 +10,14 @@ router.post('/', (req, res) => users.registerUser(req, res));
 //Login user ==Working==
 router.post('/login', (req, res) => users.logUser(req, res));
 
-//Log out user
+//Log out user ==Working==
 router.post('/logout', auth, (req, res) => users.logOut(req, res));
 
-//Log out user from all devices
+//Log out user from all devices ==Working==
 router.post('/logoutAll', auth, (req, res) => users.logOutAll(req, res));
+
+//Get my info while log
+router.get('/me', auth, async (req, res) => res.send(req.user));
 
 
 

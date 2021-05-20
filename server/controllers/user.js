@@ -12,7 +12,6 @@ const registerUser = async (req, res) => {
   };
 };
 
-
 //Login User ==Working==
 const logUser = async (req, res) => {
   try {
@@ -38,7 +37,7 @@ const logOut = async (req, res) => {
   }
 }
 
-//Logout user from all devices
+//Logout user from all devices ==Working==
 const logOutAll = async (req, res) => {
   try {
       req.user.tokens = [];
@@ -48,6 +47,8 @@ const logOutAll = async (req, res) => {
       res.status(500).send();
   };
 };
+
+
 
 
 module.exports = {
