@@ -64,6 +64,7 @@ const userSchema = mongoose.Schema({
     type: Number,
     min: 0,
     max: 2,
+    required: true
   },
 
   tokens: [{
@@ -72,13 +73,6 @@ const userSchema = mongoose.Schema({
       required: true,
     }
   }]
-})
-
-
-userSchema.virtual('tasks', {
-  ref: 'Task',
-  localField: '_id',
-  foreignField: 'owner'
 })
 
 

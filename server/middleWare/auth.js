@@ -20,10 +20,7 @@ const auth = async (req, res, next) => {
   }
 }
 
-module.exports = {
-  auth
-}
-
+module.exports = auth
 
 //kbasfkjbas6641
 // const clientAuth = async (req, res, next) => {
