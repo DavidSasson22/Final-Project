@@ -40,15 +40,32 @@ const logOut = async (req, res) => {
 //Logout user from all devices ==Working==
 const logOutAll = async (req, res) => {
   try {
-      req.user.tokens = [];
-      await req.user.save();
-      res.send();
+    req.user.tokens = [];
+    await req.user.save();
+    res.send();
   } catch (e) {
-      res.status(500).send();
+    res.status(500).send();
   };
 };
 
+//Edit user's info
+const updateUser = async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = ['firstName', 'lastName', 'isActive', 'email', `password`];
+  const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
+  if (!isValidOperation) {
+    return res.status(400).send({ error: 'Invalid updates!' });
+  };
+
+  try {
+    updates.forEach((update) => req.user[update] = req.body[update]);
+    await req.user.save();
+    res.send(req.user);
+  } catch (e) {
+    res.status(400).send(e);
+  };
+};
 
 
 module.exports = {
@@ -56,6 +73,7 @@ module.exports = {
   logUser,
   logOut,
   logOutAll,
+  updateUser,
 }
 
 // //Get all user's info, find by _id

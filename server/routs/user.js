@@ -16,10 +16,11 @@ router.post('/logout', auth, (req, res) => users.logOut(req, res));
 //Log out user from all devices ==Working==
 router.post('/logoutAll', auth, (req, res) => users.logOutAll(req, res));
 
-//Get my info while log
+//Get my info while loged in ==Working==
 router.get('/me', auth, async (req, res) => res.send(req.user));
 
-
+//Edit user's info
+router.patch('/me', auth, (req, res) => users.updateUser(req, res)); 
 
 module.exports = router;
 
