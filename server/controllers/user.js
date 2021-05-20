@@ -67,7 +67,7 @@ const updateUser = async (req, res) => {
   };
 };
 
-//Delete user
+//Delete user ==Working==
 const deleteUser = async (req, res) => {
   try {
       await req.user.remove();
@@ -116,39 +116,3 @@ module.exports = {
 //     res.status(400).send(e)
 //   };
 // };
-
-// //Create new user
-// const createNewUser = async (req, res) => {
-//   const { firstName, lastName, email, password, joinedAt, isActive, userType } = req.body;
-//   const user = new User({ firstName, lastName, email, password, joinedAt, isActive, userType });
-//   try {
-//     await user.save();
-//     const token = await user.generateAuthToken();
-//     res.status(201).send({ user, token });
-//   }
-//   catch (e) {
-//     res.status(400).send(e);
-//   }
-// };
-
-// //Login
-// const userLog = async (req, res) => {
-//   try {
-//     const user = await User.findByCredentials(req.body.email, req.body.password);
-//     const token = await user.generateAuthToken();
-//     res.send({ user, token });
-//   }
-//   catch (e) {
-//     res.status(400).send();
-//   };
-// };
-
-
-// module.exports = {
-//   getUser,
-//   updateUser,
-//   createNewUser,
-//   userLog,
-// }
-
-
