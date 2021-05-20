@@ -2,8 +2,6 @@ const User = require('../models/user');
 
 //Get all user's info, find by _id
 const getUser = async (req, res) => {
-  console.log(`getUser activated`);
-  console.log(req.params);
   const _id = req.params.id
   try {
     const user = await User.findById(_id);

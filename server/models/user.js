@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require(`jsonwebtoken`);
+// const Review = require(`./review`)
 
 
 const userSchema = mongoose.Schema({
@@ -35,7 +36,15 @@ const userSchema = mongoose.Schema({
   },
 
   password: {
-
+    type: String,
+    required: true,
+    minlength: 7,
+    trim: true,
+    validate(value) {
+      if (value.toLowerCase().includes('password')) {
+        throw new Error('Password cannot contain "password"')
+      }
+    }
   },
 
   joinedAt: {
@@ -65,10 +74,33 @@ const userSchema = mongoose.Schema({
   }]
 })
 
+
+userSchema.virtual('tasks', {
+  ref: 'Task',
+  localField: '_id',
+  foreignField: 'owner'
+})
+
+
+userSchema.virtual('Review', {
+  ref: 'reviews',
+  localField: '_id',
+  foreignField: 'owner'
+})
+
+
+userSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+  delete userObject.password;
+  delete userObject.tokens;
+  return userObject
+}
+
 //generateAuthToken
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({_id : user._id.toString()}, `kbasfkjbas6641`);
+  const token = jwt.sign({ _id: user._id.toString() }, `kbasfkjbas6641`);
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token
