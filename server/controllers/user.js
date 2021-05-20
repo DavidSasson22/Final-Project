@@ -48,7 +48,7 @@ const logOutAll = async (req, res) => {
   };
 };
 
-//Edit user's info
+//Edit user's info ==Working==
 const updateUser = async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['firstName', 'lastName', 'isActive', 'email', `password`];
@@ -67,6 +67,16 @@ const updateUser = async (req, res) => {
   };
 };
 
+//Delete user
+const deleteUser = async (req, res) => {
+  try {
+      await req.user.remove();
+      res.send(req.user);
+  } catch (e) {
+      res.status(500).send();
+  };
+};
+
 
 module.exports = {
   registerUser,
@@ -74,6 +84,7 @@ module.exports = {
   logOut,
   logOutAll,
   updateUser,
+  deleteUser,
 }
 
 // //Get all user's info, find by _id

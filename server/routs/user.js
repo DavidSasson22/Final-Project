@@ -19,8 +19,11 @@ router.post('/logoutAll', auth, (req, res) => users.logOutAll(req, res));
 //Get my info while loged in ==Working==
 router.get('/me', auth, async (req, res) => res.send(req.user));
 
-//Edit user's info
-router.patch('/me', auth, (req, res) => users.updateUser(req, res)); 
+//Edit user's info ==Working==
+router.patch('/me', auth, (req, res) => users.updateUser(req, res));
+
+//Delete user  while loged in
+router.delete('/me', auth, (req, res) => users.deleteUser(req, res));
 
 module.exports = router;
 
