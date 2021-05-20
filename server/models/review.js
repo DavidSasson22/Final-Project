@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
+// const validator = require('validator');
 
 const reviewSchema = mongoose.Schema({
   owner: {
-
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
   },
 
   date: {
