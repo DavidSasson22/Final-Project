@@ -13,7 +13,7 @@ const registerUser = async (req, res) => {
 };
 
 
-//Log User
+//Login User ==Working==
 const logUser = async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password);
@@ -24,25 +24,37 @@ const logUser = async (req, res) => {
   };
 };
 
-//Log out user
+//Log out user ==Working==
 const logOut = async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
-      return token.token !== req.token
-    })
-    await req.user.save()
+      return token.token !== req.token;
+    });
+    await req.user.save();
 
-    res.send()
+    res.send();
   } catch (e) {
-    res.status(500).send()
+    res.status(500).send();
   }
 }
+
+//Logout user from all devices
+const logOutAll = async (req, res) => {
+  try {
+      req.user.tokens = [];
+      await req.user.save();
+      res.send();
+  } catch (e) {
+      res.status(500).send();
+  };
+};
 
 
 module.exports = {
   registerUser,
   logUser,
-  logOut
+  logOut,
+  logOutAll,
 }
 
 // //Get all user's info, find by _id

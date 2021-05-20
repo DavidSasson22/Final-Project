@@ -13,6 +13,8 @@ router.post('/login', (req, res) => users.logUser(req, res));
 //Log out user
 router.post('/logout', auth, (req, res) => users.logOut(req, res));
 
+//Log out user from all devices
+router.post('/logoutAll', auth, (req, res) => users.logOutAll(req, res));
 
 
 
