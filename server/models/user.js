@@ -77,7 +77,7 @@ const userSchema = mongoose.Schema({
 
 
 userSchema.virtual('Review', {
-  ref: 'reviews',
+  ref: 'Reviews',
   localField: '_id',
   foreignField: 'owner'
 })
@@ -124,7 +124,7 @@ userSchema.pre(`save`, async function (next) {
   next();
 })
 
-const User = mongoose.model('users-collection', userSchema)
+const User = mongoose.model('Users', userSchema)
 
 
 module.exports = User;

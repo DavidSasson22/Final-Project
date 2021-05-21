@@ -5,7 +5,13 @@ const reviewSchema = mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'User'
+    ref: 'Users'
+  },
+
+  object: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Businesses'
   },
 
   date: {
@@ -42,7 +48,7 @@ const reviewSchema = mongoose.Schema({
   },
 })
 
-const Review = mongoose.model('review-collection', reviewSchema)
+const Review = mongoose.model('Reviews', reviewSchema)
 
 
 module.exports = Review;
