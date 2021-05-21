@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/users', userRouter);
 app.use('/api/reviews', reviewRouter);
-app.use('/api/businessess', buisnessRouter);
+app.use('/api/businesses', buisnessRouter);
 
 
 // API calls

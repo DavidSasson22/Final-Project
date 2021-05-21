@@ -1,6 +1,6 @@
 const Buisness = require('../models/buisness');
 
-//Add buisness
+//Add buisness ==working==
 const addBuisness = async (req, res) => {
   const buisness = new Buisness({
     ...req.body,
@@ -20,19 +20,35 @@ const getMyBuisnesses = async (req, res) => {
     await req.user.populate('business').execPopulate();
     res.send(req.user.business);
   } catch (e) {
-    res.status(500).send()
+    res.status(500).send();
   };
 };
 
-//Get user's specific business
+//Get user's specific business ==Working==
 const getSingleBuisness = async (req, res) => {
   const _id = req.params.id
   try {
-    const buisness = await Buisness.findOne({ _id, owner: req.user._id });
+    const buisness = await Buisness.findOne({ _id });
     if (!buisness) {
       return res.status(404).send()
     };
     res.send(buisness)
+  } catch (e) {
+    res.status(500).send()
+  };
+};
+
+//Get business reviews
+const getBusinessReviews = async (req, res) => {
+  const _id = req.params.id
+  try {
+    const buisness = await Buisness.findOne({ _id });
+    if (!buisness) {
+      return res.status(404).send()
+    };
+    // res.send(buisness)
+    await buisness.populate('review').execPopulate();
+    res.send(buisness.review);
   } catch (e) {
     res.status(500).send()
   };
@@ -81,4 +97,5 @@ module.exports = {
   getSingleBuisness,
   updateBuisness,
   deleteBuisness,
+  getBusinessReviews,
 }

@@ -27,7 +27,7 @@ const reviewSchema = mongoose.Schema({
       max: 5,
     },
 
-    Cleanliness: {
+    cleanliness: {
       type: Number,
       required: false,
       min: 0,

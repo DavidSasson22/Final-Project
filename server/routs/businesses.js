@@ -33,4 +33,7 @@ router.delete('/:id', auth, (req, res) => business.deleteBuisness(req, res));
 //Get specific business
 router.get('/:id', (req, res) => business.getSingleBuisness(req, res));
 
+//Get all business' reviews
+router.get('/:id/reviews', (req, res) => business.getBusinessReviews(req, res));
+
 module.exports = router;
