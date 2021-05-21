@@ -5,3 +5,6 @@ const auth = require('../middleWare/auth');
 
 //Post review
 router.post('/', auth, (req, res) => reviews.postReview(req, res));
+
+
+module.exports = router;

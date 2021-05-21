@@ -10,25 +10,25 @@ const auth = require('../middleWare/auth');
                          =================
 */
 
-//Register new user ==Working==
+//Register new user 
 router.post('/', (req, res) => users.registerUser(req, res));
 
-//Login user ==Working==
+//Login user 
 router.post('/login', (req, res) => users.logUser(req, res));
 
-//Log out user ==Working==
+//Log out user 
 router.post('/logout', auth, (req, res) => users.logOut(req, res));
 
-//Log out user from all devices ==Working==
+//Log out user from all devices 
 router.post('/logoutAll', auth, (req, res) => users.logOutAll(req, res));
 
-//Get my info while loged in ==Working==
+//Get my info while loged in 
 router.get('/me', auth, async (req, res) => res.send(req.user));
 
-//Edit user's info ==Working==
+//Edit user's info 
 router.patch('/me', auth, (req, res) => users.updateUser(req, res));
 
-//Delete user  while loged in ==Working==
+//Delete user  while loged in 
 router.delete('/me', auth, (req, res) => users.deleteUser(req, res));
 
 module.exports = router;

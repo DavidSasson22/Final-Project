@@ -75,12 +75,19 @@ const userSchema = mongoose.Schema({
   }]
 })
 
-
-userSchema.virtual('Review', {
+//Conect review to it's owner
+userSchema.virtual('review', {
   ref: 'Reviews',
   localField: '_id',
   foreignField: 'owner'
-})
+});
+
+//Conect business to it's owner
+userSchema.virtual('business', {
+  ref: 'Businesses',
+  localField: '_id',
+  foreignField: 'owner'
+});
 
 
 userSchema.methods.toJSON = function () {
@@ -89,7 +96,7 @@ userSchema.methods.toJSON = function () {
   delete userObject.password;
   delete userObject.tokens;
   return userObject
-}
+};
 
 //generateAuthToken
 userSchema.methods.generateAuthToken = async function () {
@@ -98,7 +105,7 @@ userSchema.methods.generateAuthToken = async function () {
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token
-}
+};
 
 
 //Check if user's email matches user's password
@@ -122,9 +129,9 @@ userSchema.pre(`save`, async function (next) {
     user.password = await bcrypt.hash(user.password, 8);
   }
   next();
-})
+});
 
-const User = mongoose.model('Users', userSchema)
+const User = mongoose.model('Users', userSchema);
 
 
 module.exports = User;

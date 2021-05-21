@@ -2,11 +2,12 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+require('./server/dataBase/mongoose');
 // const jwt = require(`jsonwebtoken`);
 
-
-require('./server/dataBase/mongoose');
 const userRouter = require('./server/routs/user');
+const reviewRouter = require('./server/routs/reviews');
+const buisnessRouter = require('./server/routs/businesses');
 
 
 const app = express();
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/users', userRouter);
+app.use('/api/reviews', reviewRouter);
+app.use('/api/businessess', buisnessRouter);
 
 
 // API calls
@@ -47,3 +50,15 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 
 
 //Remainder: I should change in package.json from "start: nodemon, to start: node"
+
+
+const User = require('./server/models/user');
+
+const main = async () => {
+
+  const user = await User.findById('60a787ecadce211250536f3f')
+  await user.populate('business').execPopulate()
+  console.log(user.business)
+}
+
+main()
