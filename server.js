@@ -47,18 +47,3 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
-
-
-//Remainder: I should change in package.json from "start: nodemon, to start: node"
-
-
-const User = require('./server/models/user');
-
-const main = async () => {
-
-  const user = await User.findById('60a787ecadce211250536f3f')
-  await user.populate('business').execPopulate()
-  console.log(user.business)
-}
-
-main()

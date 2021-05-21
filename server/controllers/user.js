@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-//Register user ==Working==
+//Register user 
 const registerUser = async (req, res) => {
   const user = new User(req.body);
   try {
@@ -12,7 +12,7 @@ const registerUser = async (req, res) => {
   };
 };
 
-//Login User ==Working==
+//Login User 
 const logUser = async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password);
@@ -23,7 +23,7 @@ const logUser = async (req, res) => {
   };
 };
 
-//Log out user ==Working==
+//Log out user 
 const logOut = async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
@@ -37,7 +37,7 @@ const logOut = async (req, res) => {
   }
 }
 
-//Logout user from all devices ==Working==
+//Logout user from all devices 
 const logOutAll = async (req, res) => {
   try {
     req.user.tokens = [];
@@ -48,7 +48,7 @@ const logOutAll = async (req, res) => {
   };
 };
 
-//Edit user's info ==Working==
+//Edit user's info 
 const updateUser = async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ['firstName', 'lastName', 'isActive', 'email', `password`];
@@ -67,7 +67,7 @@ const updateUser = async (req, res) => {
   };
 };
 
-//Delete user ==Working==
+//Delete user 
 const deleteUser = async (req, res) => {
   try {
       await req.user.remove();
