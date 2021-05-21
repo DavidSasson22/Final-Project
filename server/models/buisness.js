@@ -89,7 +89,7 @@ const businessSchema = mongoose.Schema({
 });
 
 
-businessSchema.virtual('Review', {
+businessSchema.virtual('review', {
   ref: 'Reviews',
   localField: '_id',
   foreignField: 'object'

@@ -68,7 +68,7 @@ const updateReview = async (req, res) => {
   };
 };
 
-//Delete user's business
+//Delete user's review
 const deleteReview = async (req, res) => {
   try {
     const review = await Review.findOneAndDelete({ _id: req.params.id, owner: req.user._id });
