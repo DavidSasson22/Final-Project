@@ -14,7 +14,6 @@ const addBuisness = async (req, res) => {
   };
 };
 
-
 //Get user's buisnesses list
 const getMyBuisnesses = async (req, res) => {
   try {
@@ -24,7 +23,6 @@ const getMyBuisnesses = async (req, res) => {
     res.status(500).send()
   };
 };
-
 
 //Get user's specific business
 const getSingleBuisness = async (req, res) => {
@@ -62,19 +60,18 @@ const updateBuisness = async (req, res) => {
   };
 };
 
-
 //Delete user's business
 const deleteBuisness = async (req, res) => {
   try {
-    const buisness = await Buisness.findOneAndDelete({ _id: req.params.id, owner: req.user._id })
+    const buisness = await Buisness.findOneAndDelete({ _id: req.params.id, owner: req.user._id });
     if (!buisness) {
-      res.status(404).send()
-    }
-    res.send(buisness)
+      res.status(404).send();
+    };
+    res.send(buisness);
   } catch (e) {
-    res.status(500).send()
-  }
-}
+    res.status(500).send();
+  };
+};
 
 
 
@@ -83,4 +80,5 @@ module.exports = {
   getMyBuisnesses,
   getSingleBuisness,
   updateBuisness,
+  deleteBuisness,
 }
