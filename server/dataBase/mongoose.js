@@ -1,5 +1,9 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
-const connection = "mongodb+srv://David_Sasson:2fNYIFHDBhvGiVhP@pee-or-not.nxlxl.mongodb.net/appDatabase?retryWrites=true&w=majority";
+
+const url = process.env.db_url;
+
+const connection = url;
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);

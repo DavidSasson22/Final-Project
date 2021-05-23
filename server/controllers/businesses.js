@@ -47,7 +47,15 @@ const getBusinessReviews = async (req, res) => {
       return res.status(404).send()
     };
     // res.send(buisness)
-    await buisness.populate('review').execPopulate();
+    await buisness.populate({
+      path: 'review',
+      options: {
+        sort: {
+          date: 1
+        },
+        limit: 10
+      }
+    }).execPopulate();
     res.send(buisness.review);
   } catch (e) {
     res.status(500).send()

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = new express.Router();
-const buisnessRouter = require('./businesses');
 const review = require('../controllers/reviews');
 const auth = require('../middleWare/auth');
+const isLogedClient = require('../middleWare/isLogedClient');
 
 
 /*
@@ -12,7 +12,7 @@ const auth = require('../middleWare/auth');
 */
 
 //Post review
-router.post('/', auth, (req, res) => review.postReview(req, res));
+router.post('/', isLogedClient, (req, res) => review.postReview(req, res));
 
 //Get all user's reviews
 router.get('/', auth, (req, res) => review.getReviews(req, res));

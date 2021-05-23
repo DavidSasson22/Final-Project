@@ -1,4 +1,5 @@
 const Review = require('../models/review');
+const Buisness = require('../models/buisness');
 
 
 /*
@@ -15,8 +16,47 @@ const postReview = async (req, res) => {
     owner: req.user._id,
   });
   try {
-    await review.save()
-    res.status(201).send(review)
+    const buisness = await Buisness.findOne(review.object);
+    if (!buisness) {
+      return res.status(404).send()
+    };
+    let buisnessRank = buisness.reviews.rank.totalRank;
+    let buisnessClean = buisness.reviews.rank.cleanliness;
+    let buisnessPaper = buisness.reviews.rank.toiletPaper;
+    let buisnessKindness = buisness.reviews.rank.kindness;
+
+    let revRanked = review.rank.totalRank;
+    let revClean = review.rank.cleanliness;
+    let revPaper = review.rank.toiletPaper;
+    let revKindness = review.rank.kindness;
+
+    let numberOfRanks = buisness.reviews.numberOfReviewers;
+
+    if (buisnessRank) {
+      buisness.reviews.rank.totalRank =
+        (buisnessRank * numberOfRanks + revRanked) / (numberOfRanks + 1);
+      buisness.reviews.rank.cleanliness =
+        (buisnessClean * numberOfRanks + revClean) / (numberOfRanks + 1);
+      buisness.reviews.rank.toiletPaper =
+        (buisnessPaper * numberOfRanks + revPaper) / (numberOfRanks + 1);
+      let result = Number((buisnessKindness * numberOfRanks + revKindness) / (numberOfRanks + 1));
+      buisness.reviews.rank.kindness = result.toFixed(2);
+    }
+    else {
+      buisness.reviews.rank.totalRank = revRanked;
+      buisness.reviews.rank.cleanliness = revClean;
+      buisness.reviews.rank.toiletPaper = revPaper;
+      buisness.reviews.rank.kindness = revKindness;
+    };
+    buisness.reviews.numberOfReviewers += 1;
+
+    await buisness.save();
+  } catch (e) {
+    return res.status(500).send(e)
+  };
+  try {
+    await review.save();
+    res.status(201).send(review);
   } catch (e) {
     res.status(400).send(e)
   };
@@ -25,7 +65,14 @@ const postReview = async (req, res) => {
 //Get user's reviews list
 const getReviews = async (req, res) => {
   try {
-    await req.user.populate('review').execPopulate();
+    await req.user.populate({
+      path: 'review',
+      options: {
+        sort: {
+          date: 1
+        },
+      }
+    }).execPopulate();
     res.send(req.user.review);
   } catch (e) {
     res.status(500).send()

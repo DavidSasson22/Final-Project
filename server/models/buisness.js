@@ -64,18 +64,21 @@ const businessSchema = mongoose.Schema({
         required: false,
         min: 0,
         max: 5,
+        default: null,
       },
 
-      Cleanliness: {
+      cleanliness: {
         type: Number,
         required: false,
         min: 0,
         max: 5,
+        default: null,
       },
 
       toiletPaper: {
-        type: Boolean,
+        type: Number,
         required: false,
+        default: 0,
       },
 
       kindness: {
@@ -83,6 +86,7 @@ const businessSchema = mongoose.Schema({
         required: false,
         min: 0,
         max: 5,
+        default: null,
       },
     },
   },

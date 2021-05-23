@@ -4,7 +4,7 @@ const User = require('../models/user');
 const tokenJwt = process.env.tokenJwt;
 
 
-const auth = async (req, res, next) => {
+const isLogedProvider = async (req, res, next) => {
   try {
     const token = req.header('Authorization').replace('Bearer ', '');
     const decoded = jwt.verify(token, tokenJwt);
@@ -12,14 +12,24 @@ const auth = async (req, res, next) => {
 
     if (!user) {
       throw new Error();
+    };
+
+    if (user.userType !== 1) {
+      throw new Error(`You are not register as a buisness owner`);
     }
 
     req.token = token;
     req.user = user;
     next();
   } catch (e) {
-    res.status(401).send({ error: 'Please authenticate.' });
+    console.log(e.message);
+    if (e .message == `invalid signature`) {
+      res.status(401).send({ error: 'Please authenticate.' });
+    }
+    else {
+    } 
+    res.status(401).send(`${e}`);
   };
 };
 
-module.exports = auth
+module.exports = isLogedProvider

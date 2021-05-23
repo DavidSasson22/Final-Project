@@ -1,9 +1,10 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require(`jsonwebtoken`);
-// const Review = require(`./review`)
 
+const tokenJwt = process.env.tokenJwt;
 
 const userSchema = mongoose.Schema({
   firstName: {
@@ -101,7 +102,7 @@ userSchema.methods.toJSON = function () {
 //generateAuthToken
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, `kbasfkjbas6641`);
+  const token = jwt.sign({ _id: user._id.toString() }, tokenJwt);
   user.tokens = user.tokens.concat({ token });
   await user.save();
   return token

@@ -2,6 +2,7 @@ const express = require('express');
 const router = new express.Router();
 const business = require('../controllers/businesses');
 const auth = require('../middleWare/auth');
+const isLogedProvider = require('../middleWare/isLogedProvider');
 
 
 /*
@@ -12,7 +13,7 @@ const auth = require('../middleWare/auth');
 
 
 //Add business
-router.post('/', auth, (req, res) => business.addBuisness(req, res));
+router.post('/', isLogedProvider, (req, res) => business.addBuisness(req, res));
 
 //Get all user's businesses
 router.get('/', auth, (req, res) => business.getMyBuisnesses(req, res));

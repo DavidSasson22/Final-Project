@@ -29,19 +29,21 @@ const reviewSchema = mongoose.Schema({
 
     cleanliness: {
       type: Number,
-      required: false,
+      required: true,
       min: 0,
       max: 5,
     },
 
     toiletPaper: {
-      type: Boolean,
-      required: false,
+      type: Number,
+      required: true,
+      min: 0,
+      max: 1,
     },
 
     kindness: {
       type: Number,
-      required: false,
+      required: true,
       min: 0,
       max: 5,
     },
