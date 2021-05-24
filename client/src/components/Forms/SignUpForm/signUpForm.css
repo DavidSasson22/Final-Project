@@ -1,0 +1,42 @@
+.create-account-title{
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+.sign-in-link{
+  font-family: -apple-system,BlinkMacSystemFont,"Roboto","Ubuntu","Open Sans","Helvetica Neue",sans-serif;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background: #18CDCD;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px ;
+  color: #fff;
+}
+
+.form-button.button-outline, .footer ul.footer-links li a {
+  background-color: transparent;
+  font-size: 0.9rem;
+  padding-bottom: 14px;
+  padding-top: 14px;
+  margin-top: 8px;
+  color: #333;
+}
+
+.form-button.button-outline:hover{
+  background-color: #18CDCD;
+  color: #fff;
+}
+
+.cookies-policy-consent{
+  font-size: .6rem;
+  color: #888;
+  margin-bottom: 25px;
+}
+
+.central-form{
+  max-width: 250px;
+}

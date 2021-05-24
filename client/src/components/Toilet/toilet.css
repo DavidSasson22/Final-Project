@@ -1,0 +1,282 @@
+.toilet-wrapper {
+  display: flex;
+  position: relative;
+  top: 10px;
+  left: 50px;
+}
+
+.toilet {
+  background: white;
+}
+
+#toilet-lid {
+  height: 3px;
+  width: 40px;
+  border-radius:1.2px;
+  position: absolute;
+  left: calc((100% - 70px) / 2);
+  top: calc((100% - 42px) / 2);
+  transform-origin: 38.5px 1.5px;
+  animation-name: lid-opening;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-out;
+}
+
+#toilet-bowl {
+  height: 16px;
+  width: 40px;
+  border-radius: 1.2px 1.2px 20px 20px;
+  position: absolute;
+  left: calc((100% - 70px) / 2);
+  top: calc((100% - 33px) / 2);
+  box-shadow: 0 0 0 1.8px #ADD8E6;
+}
+
+#toilet-leg {
+  height: 38px;
+  width: 40px;
+  border-radius: 1.2px;
+  position: absolute;
+  left: calc((100% - 40px) / 2);
+  top: calc((100% - 33px) / 2);
+}
+
+#toilet-tank {
+  height: 40px;
+  width: 20px;
+  border-radius: 1.2px;
+  position: absolute;
+  left: calc((100% + 13.6px) / 2);
+  top: calc((100% - 80px) / 2);
+}
+
+#toilet-tank-lid {
+  height: 3px;
+  width: 20px;
+  border-radius: 1.2px 1.2px 0 0;
+  position: absolute;
+  left: calc((100% + 13.6px) / 2);
+  top: calc((100% - 88px) / 2);
+}
+
+#flush-lever {
+  height: 3px;
+  width: 10px;
+  background-color: #ccc;
+  border-radius: 1.2px;
+  position: absolute;
+  left: calc((100% + 24px) / 2);
+  top: calc((100% - 72px) / 2);
+  transform-origin: 1.6px 1.6px;
+  animation-name: lever-rotation;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes lever-rotation {
+  10% {
+    transform: rotate(0);
+  }
+  17% {
+    transform: rotate(60deg);
+  }
+  
+  24% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes lid-opening {
+  30%{
+    transform: rotate(0);
+  }
+  40% {
+    transform: rotate(90deg);
+  }
+  
+  80% {
+    transform: rotate(90deg);
+  }
+  
+  90%{
+    transform: rotate(0);
+  }
+}
+
+#toilet-bowl-overlay {
+  height: 16px;
+  width: 40px;
+  border-radius: 1.2px 1.2px 20px 20px;
+  position: absolute;
+  left: calc((100% - 70px) / 2);
+  top: calc((100% - 33px) / 2);
+}
+
+#water {
+  position: absolute;
+  left: calc((100% - 40px) / 2 - 0.2px);
+  top: calc((100% - 41px) / 2 + 11px);
+  background-color: #3882ff;
+  height: 8px;
+  width: 5.4px;
+  animation-name: water;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+#water:after {
+  background-color: transparent;
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 5px solid #3882ff;
+  border-color: #3882ff transparent transparent #3882ff;
+  transform: rotate(45deg);
+  top: -4.4px;
+  animation-name: water-right;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+#water:before {
+  background-color: transparent;
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 5px solid #3882ff;
+  border-color: #3882ff transparent transparent #3882ff;
+  transform: rotate(45deg);
+  top: -4.4px;
+  right: 0px;
+  animation-name: water-left;
+  animation-duration: 6s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes water {
+  30%{
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-12px);
+  }
+  45% {
+    transform: translateY(-14px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  55% {
+    transform: translateY(-15px);
+  }
+  57% {
+    transform: translateY(-12px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  65% {
+    transform: translateY(-13px);
+  }
+  70% {
+    transform: translateY(-15px);
+  }
+  75% {
+    transform: translateY(-12px);
+  }
+  
+  80% {
+    transform: translateY(-15px);
+  }
+  
+  90%{
+    transform: translateY(0);
+  }
+}
+
+@keyframes water-right {
+  30%{
+    transform: rotate(45deg);
+  }
+  40% {
+    transform: rotate(30deg);
+  }
+  45% {
+    transform: rotate(65deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+  55% {
+    transform: rotate(65deg);
+  }
+  57% {
+    transform: rotate(30deg);
+  }
+  60% {
+    transform: rotate(65deg);
+  }
+  65% {
+    transform: rotate(30deg);
+  }
+  70% {
+    transform: rotate(65deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
+  
+  80% {
+    transform: rotate(65deg);
+  }
+  
+  90%{
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes water-left {
+  30%{
+    transform: rotate(45deg);
+  }
+  40% {
+    transform: rotate(65deg);
+  }
+  45% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(65deg);
+  }
+  55% {
+    transform: rotate(30deg);
+  }
+  57% {
+    transform: rotate(65deg);
+  }
+  60% {
+    transform: rotate(30deg);
+  }
+  65% {
+    transform: rotate(65deg);
+  }
+  70% {
+    transform: rotate(30deg);
+  }
+  75% {
+    transform: rotate(65deg);
+  }
+  
+  80% {
+    transform: rotate(30deg);
+  }
+  
+  90%{
+    transform: rotate(45deg);
+  }
+}

@@ -1,76 +1,33 @@
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import React, { Component } from 'react';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import HomePage from './pages/HomePage/HomePage';
+import ClientPage from './pages/ClientPage/ClientPage';
+import ProviderPage from './pages/ProviderPage/ProviderPage';
+import LogInPage from './pages/LogInPage/LogInPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
+import MainPage from './pages/MainPage/MainPage';
 
-import logo from './logo.svg';
-
-import './App.css';
+import './css/App.css';
+import './css/Normalize.css';
 
 class App extends Component {
-  state = {
-    response: '',
-    post: '',
-    responseToPost: '',
-  };
-
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
-
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
-
-    if (response.status !== 200) throw Error(body.message);
-
-    return body;
-  };
-
-  handleSubmit = async e => {
-    e.preventDefault();
-    const response = await fetch('/api/world', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ post: this.state.post }),
-    });
-    const body = await response.text();
-
-    this.setState({ responseToPost: body });
-  };
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-        <p>{this.state.response}</p>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <strong>Post to Server:</strong>
-          </p>
-          <input
-            type="text"
-            value={this.state.post}
-            onChange={e => this.setState({ post: e.target.value })}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        <p>{this.state.responseToPost}</p>
-      </div>
+      <Router>
+        <Header/>
+        <Switch>
+          <Route path="/" exact component={HomePage}/>
+          <Route path="/login" exact component={LogInPage}/>
+          <Route path="/signup" exact component={SignUpPage}/>
+          <Route path="/client" exact component={ClientPage}/>
+          <Route path="/provider" exact component={ProviderPage}/>
+          <Route path="/main" exact component={MainPage}/>
+        </Switch>
+        <Footer/>
+      </Router>
     );
   }
 }

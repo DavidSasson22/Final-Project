@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
+    "jest-runtime": "^26.6.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1"
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^2.1.8",
+    "react-tooltip": "^4.2.19",
+    "validator": "^13.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
