@@ -90,7 +90,7 @@ userSchema.virtual('business', {
   foreignField: 'owner'
 });
 
-
+//Don't send password and tokens array
 userSchema.methods.toJSON = function () {
   const user = this;
   const userObject = user.toObject();
