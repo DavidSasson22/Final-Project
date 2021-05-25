@@ -1,9 +1,8 @@
-.sign-up-page{
+.sign-up{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: url(../../assets/images/restroom.jpg) no-repeat center center / cover;
   overflow: hidden;
-  height: 100vh;
 }

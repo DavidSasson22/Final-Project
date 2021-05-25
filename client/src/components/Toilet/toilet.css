@@ -1,8 +1,8 @@
 .toilet-wrapper {
   display: flex;
   position: relative;
-  top: 10px;
-  left: 50px;
+  top: 40px;
+  left: -75px;
 }
 
 .toilet {

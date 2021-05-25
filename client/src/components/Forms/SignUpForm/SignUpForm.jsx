@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 import './signUpForm.css';
 import { FaChevronLeft } from "react-icons/fa";
 import User from '../../../assets/svg/user.svg';
 import Lock from '../../../assets/svg/lock.svg';
 
 export default function SignUpForm() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:5000/api/users',{email,password});
+      console.log(res);
+    }catch(e) {
+      
+    }
+  }
+
   return (
     <div className="react-view">
       <div className="content content--with-space">
-        
+
         <div className="sign-in-link">
-          <FaChevronLeft size={20} style={{"cursor":"pointer"}}/>
+          <FaChevronLeft size={20} style={{ "cursor": "pointer" }} />
           <div className="create-account-title">
             <p>Create account</p>
           </div>
@@ -22,15 +37,16 @@ export default function SignUpForm() {
                 <div className="first-form-group">
                   <div className="input-container">
                     <div className="input-icon">
-                      <img src={User} alt="user icon"/>
+                      <img src={User} alt="user icon" />
                     </div>
-                    <input 
-                      name="email" 
-                      label="Email" 
-                      placeholder="Email" 
-                      autoComplete="email" 
-                      type="text" 
-                      className="form-input"/>
+                    <input
+                      name="email"
+                      label="Email"
+                      placeholder="Email"
+                      autoComplete="email"
+                      type="text"
+                      className="form-input"
+                      onChange={e=>setEmail(e.target.value)} />
                   </div>
                 </div>
                 <div className="form-group">
@@ -38,13 +54,14 @@ export default function SignUpForm() {
                     <div className="input-icon">
                       <img src={Lock} alt="lock icon" />
                     </div>
-                    <input 
-                      name="password" 
-                      label="Password" 
-                      placeholder="Password" 
-                      autoComplete="password" 
-                      type="password" 
-                      className="form-input"/>
+                    <input
+                      name="password"
+                      label="Password"
+                      placeholder="Password"
+                      autoComplete="password"
+                      type="password"
+                      className="form-input" 
+                      onChange={e=>setPassword(e.target.value)}/>
                   </div>
                 </div>
                 <div className="cookies-policy-consent">
@@ -64,7 +81,8 @@ export default function SignUpForm() {
                     </p>
                   </div>
                 </div>
-                <button type="submit" className="form-button button-with-bg">
+                <button type="submit" className="form-button button-with-bg"
+                  onClick={e => { submitHandler(e) }}>
                   Accept and create
                 </button>
                 <button type="submit" className="form-button button-outline">
@@ -76,7 +94,7 @@ export default function SignUpForm() {
           <div className="footer--bottom">
             <ul className="form-footer-links">
               <li>
-                <a id="footer_forgot-password" href="/my-account">
+                <a id="footer_forgot-password" href="/login">
                   I already have an account
                 </a>
               </li>

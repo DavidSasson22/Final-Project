@@ -78,7 +78,7 @@ const businessSchema = mongoose.Schema({
       toiletPaper: {
         type: Number,
         required: false,
-        default: 0,
+        default: null,
       },
 
       kindness: {

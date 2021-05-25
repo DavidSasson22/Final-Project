@@ -3,7 +3,7 @@ import './providerPage.css';
 
 export default function ProviderPage() {
   return (
-    <div>
+    <div className="provider-page">
       
     </div>
   )

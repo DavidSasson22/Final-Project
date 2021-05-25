@@ -1,18 +1,17 @@
 import React from 'react';
 import './header.css';
+import Title from '../../assets/images/logo.png';
 import Toilet from '../Toilet/Toilet';
 import Login from '../Login/Login';
 
 export default function Header() {
   return (
     <header className="header">
-      <Toilet/>
       <a href="/" className="logo">
-        <span>to <span className="primery">pee</span></span>
-        <span>or </span>
-        <span>not to <span className="primery">pee</span></span>
-        
+        <Toilet/>
+        <img className="title" src={Title} alt="Logo title" />
       </a>
+
       <div className="spacer"></div>
       
       <div className="header-menu">

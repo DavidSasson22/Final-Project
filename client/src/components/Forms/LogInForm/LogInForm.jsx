@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import User from '../../../assets/svg/user.svg';
 import Lock from '../../../assets/svg/lock.svg';
 import { FaFacebookSquare, FaSteamSymbol, FaGoogle, FaApple } from 'react-icons/fa';
-const validator = require('validator');
+
 const axios = require('axios');
 
 export default function LoginForm() {
@@ -12,21 +12,19 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [data, setData] = useState({});
+  
+  let data;
+  let token;
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if(validator.setEmail(email) && validator.isStrongPassword(password)) 
-      return setErrorMsg('Invalid email or password'); 
     try {
       const res = await axios.post('http://localhost:5000/api/users/login',{email,password});
+      data = res.data;
+      token = data.token;
       setStatus(true);
-      setData(res.data);
-      // 
-      setErrorMsg('bullshit');
-      console.log(errorMsg);
-      console.log(data)
+      
+      console.log(token)
     
     }catch(err) {
       setStatus(false);

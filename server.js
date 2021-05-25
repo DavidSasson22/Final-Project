@@ -3,7 +3,6 @@ const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 require('./server/dataBase/mongoose');
-// const jwt = require(`jsonwebtoken`);
 
 const userRouter = require('./server/routs/user');
 const reviewRouter = require('./server/routs/reviews');

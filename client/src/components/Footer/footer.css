@@ -16,9 +16,9 @@
   color: rgba(255, 255, 255, 0.9);
 }
 .footer-line {
-  padding: 13px 0 16px;
+  padding: 0.3rem;
   text-align: center;
-  font-size: 14px;
+  font-size: .9rem;
   font-weight: 300;
   letter-spacing: .2px;
   background: rgba(0, 0, 0, 0.4);
@@ -43,7 +43,7 @@
   text-align: center;
   font-size: 13px;
   letter-spacing: 0.3px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: rgba(255, 255, 255, 0.5) !important;
 }
 

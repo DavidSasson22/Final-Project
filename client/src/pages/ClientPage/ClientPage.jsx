@@ -3,7 +3,7 @@ import './clientPage.css';
 
 export default function ClientPage() {
   return (
-    <div>
+    <div className="client page">
       
     </div>
   )

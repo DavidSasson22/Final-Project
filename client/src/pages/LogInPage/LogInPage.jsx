@@ -4,7 +4,7 @@ import './logInPage.css'
 
 export default function LoginPage() {
   return (
-    <div className="log-in-page">
+    <div className="log-in page">
       <div className="login-massage">
         My account 
       </div>

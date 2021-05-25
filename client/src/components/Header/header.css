@@ -6,7 +6,7 @@ header{
   box-shadow: 0 4px 2px -2px gray;
   overflow: hidden;
   flex: 1;
-  background-color: #7ACDDD;
+  background-color: #fdb5f1;
   height: 12vh;
   z-index: 100;
 }
@@ -35,12 +35,12 @@ header{
 }
 
 header .logo{
+  width: 140px;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
   font-family: 'Pattaya', sans-serif;
-  margin-top: 5px;
-  margin-left: 10vh;
-  height: 150px;
+  margin: auto 80px;
 }
 
 .header .vivid{
@@ -74,4 +74,9 @@ header .logo{
   background-color: #3e8e41;
   box-shadow: 0 1px #999;
   transform: translateY(3px);
+}
+
+.title{
+  font-size: 1.2rem;
+  margin: auto 20%;
 }

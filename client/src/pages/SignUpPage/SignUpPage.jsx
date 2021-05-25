@@ -4,7 +4,7 @@ import SignUpForm from '../../components/Forms/SignUpForm/SignUpForm';
 
 export default function SignUpPage() {
   return (
-    <div className="sign-up-page">
+    <div className="sign-up page">
       <SignUpForm/>
     </div>
   )
