@@ -3,3 +3,8 @@
   margin: auto;
   padding:16px
 }
+
+.loader{
+  width: 200px;
+  height: 60px;
+}

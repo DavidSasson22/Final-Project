@@ -7,7 +7,10 @@
 }
 
 .login-massage{
+  display: flex;
+  justify-content: center;
   text-transform: uppercase;
+  flex-direction: column;
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
   font-size: 4rem;

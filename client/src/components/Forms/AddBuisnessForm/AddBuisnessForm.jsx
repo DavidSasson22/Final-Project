@@ -1,7 +1,7 @@
 import React from 'react';
 import './addDataForm.css';
 
-export default function AddDataForm() {
+export default function AddBuisnessForm() {
   return (
     <div>
       

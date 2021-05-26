@@ -6,15 +6,15 @@ header{
   box-shadow: 0 4px 2px -2px gray;
   overflow: hidden;
   flex: 1;
-  background-color: #fdb5f1;
-  height: 12vh;
+  background-image: linear-gradient(to right, rgb(243, 117, 212), rgb(243, 213, 213));
+  min-height: 12vh;
   z-index: 100;
 }
 
 .header a {
   text-decoration: none;
   margin: auto 10px;
-  color: black;
+  color: #555;
   font-size: 1.3rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -24,7 +24,9 @@ header{
  
 .header a:hover {
   text-decoration: none;
-  color: #fff;
+  color: rgb(248, 232, 235);
+  text-shadow: -1px 0 rgb(250, 98, 98), 0 1px rgb(250, 98, 98), 1px 0 rgb(250, 98, 98), 0 -1px rgb(250, 98, 98);
+
 }
 
 .spacer{

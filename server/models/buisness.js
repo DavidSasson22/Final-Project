@@ -5,12 +5,14 @@ const businessSchema = mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Users'
+    ref: 'Users',
+    trim: true
   },
 
   name: {
     type: String,
     required: true,
+    trim: true
   },
 
   condition: {
@@ -18,18 +20,21 @@ const businessSchema = mongoose.Schema({
     required: true,
   },
 
-  adress: {
+  address: {
     country: {
       type: String,
       required: true,
+      trim: true
     },
     city: {
       type: String,
       required: true,
+      trim: true
     },
     street: {
       type: String,
       required: true,
+      trim: true
     },
     number: {
       type: String,

@@ -15,27 +15,22 @@ export default function MainPage() {
       (pos) => pos !== location && setLocation(pos),
       (err) => setLocation(err)
     );
-  }
+  };
 
   const posToAddress = async () => {
     console.log(`posToAddress activated`);
     if (location) {
       try {
-        let myAddress = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=AIzaSyCB4z8R5G-GWDAghqsgVnxctYQn-hYtHOE&region=En&language=en`);
-        console.log(myAddress);
-        let country1;
-        if (myAddress.data.results[0].address_components[2]) {
-          country = myAddress.data.results[0].address_components[2].long_name;
-        } else {
-          country1 = `Israel`;
-        }
+        let myAddress = await (await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.coords.latitude},${location.coords.longitude}&key=AIzaSyCB4z8R5G-GWDAghqsgVnxctYQn-hYtHOE&region=En&language=en`)).data.results;
+        let myCountry = myAddress[0].address_components[myAddress[0].address_components.length -1].long_name;
+        let myCity = myAddress[0].address_components[myAddress[0].address_components.length -3].long_name;
         setAddress({
-          country: country1,
-          city: myAddress.data.results[0].address_components[1].long_name,
-        })
+          country: myCountry,
+          city: myCity,  
+        });
       } catch (e) {
         console.log(e);
-      }
+      };
     };
   };
 
@@ -44,9 +39,9 @@ export default function MainPage() {
       return (
         <div>
           <h2>Waiting for location</h2>
-          <img src={loader} alt="loader" />
+          <img src={loader} alt="loader" className="loader"/>
         </div>
-      )
+      );
     }
     else if (location && !address) {
       console.log(location);
@@ -55,9 +50,9 @@ export default function MainPage() {
           <h3>latitude: {location.coords.latitude}</h3>
           <h3>longitude: {location.coords.longitude}</h3>
           <h4>Waiting for address</h4>
-          <img src={loader} alt="loader"/>
+          <img src={loader} alt="loader" className="loader"/>
         </div>
-      )
+      );
     }
     else if (location && address) {
       return (
@@ -67,9 +62,9 @@ export default function MainPage() {
           <h3>Country: {address.country}</h3>
           <h3>City: {address.city}</h3>
         </div>
-      )
-    }
-  }
+      );
+    };
+  };
 
   useEffect(() => { getPosition() }, []);
   useEffect(() => { posToAddress() }, [location]);
@@ -78,8 +73,8 @@ export default function MainPage() {
     <div className="mainPage">
       {renderFunc()}
     </div>
-  )
-}
+  );
+};
 
 
 
@@ -103,4 +98,3 @@ export default function MainPage() {
 
 
   // params.query = `${location.coords.latitude}, ${location.coords.longitude}`;
-

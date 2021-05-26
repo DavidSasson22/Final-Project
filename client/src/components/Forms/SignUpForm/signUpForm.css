@@ -16,6 +16,9 @@
   padding: 10px ;
   color: #fff;
 }
+.sign-in-link a{
+  color: #fff;
+}
 
 .form-button.button-outline, .footer ul.footer-links li a {
   background-color: transparent;
@@ -39,4 +42,13 @@
 
 .central-form{
   max-width: 250px;
+}
+
+.email-icon{
+  filter: grayscale(100%); 
+}
+
+.sign-up-from{
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

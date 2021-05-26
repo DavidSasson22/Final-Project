@@ -32,7 +32,7 @@ const getSingleBuisness = async (req, res) => {
     if (!buisness) {
       return res.status(404).send()
     };
-    res.send(buisness)
+    res.send(buisness);
   } catch (e) {
     res.status(500).send()
   };
@@ -98,6 +98,20 @@ const deleteBuisness = async (req, res) => {
 };
 
 
+//Get nearset in country
+const inCountry = async (req, res) => {
+  const myCountry = req.params.country;
+  try {
+    const buisnesses = await Buisness.find({"address.country": myCountry});
+    if (!buisnesses) {
+      return res.status(404).send();
+    };
+    res.send(buisnesses);
+  } catch (e) {
+    res.status(500).send();
+  };
+};
+
 
 module.exports = {
   addBuisness,
@@ -106,4 +120,5 @@ module.exports = {
   updateBuisness,
   deleteBuisness,
   getBusinessReviews,
+  inCountry,
 }

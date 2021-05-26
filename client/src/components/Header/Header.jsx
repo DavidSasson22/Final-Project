@@ -15,7 +15,7 @@ export default function Header() {
       <div className="spacer"></div>
       
       <div className="header-menu">
-        <a href="/rules" className="menu-item-about">About Us</a>
+        <a href="/about" className="menu-item-about">About</a>
         <a href="/" className="menu-item-home">Home</a>
         <a href="/signup" className="menu-item-home">Sign up</a>
       </div>

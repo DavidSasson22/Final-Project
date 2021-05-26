@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import './logInForm.css';
 import ReactTooltip from 'react-tooltip';
 import User from '../../../assets/svg/user.svg';
@@ -25,15 +25,12 @@ export default function LoginForm() {
       setStatus(true);
       
       console.log(token)
+      console.log(status)
     
     }catch(err) {
       setStatus(false);
     }
   }
-
-  useEffect(() => {
-    
-  },[status]);
 
   return (
     <div className="react-view">

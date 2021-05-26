@@ -37,4 +37,7 @@ router.get('/:id', (req, res) => business.getSingleBuisness(req, res));
 //Get all business' reviews
 router.get('/:id/reviews', (req, res) => business.getBusinessReviews(req, res));
 
+//Get list of businesses in the country
+router.get('/nearest/:country', (req, res) => business.inCountry(req, res));
+
 module.exports = router;
